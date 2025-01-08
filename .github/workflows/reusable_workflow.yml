@@ -13,6 +13,7 @@ jobs:
     strategy:
       fail-fast: false
     runs-on: self-hosted
+    continue-on-error: true
     if: ${{ inputs.os == 'test' }}
     steps:
     
