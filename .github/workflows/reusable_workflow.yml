@@ -1,0 +1,24 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      os:
+        required: true
+        type: string
+        
+jobs: 
+
+  build:
+    strategy:
+      fail-fast: false
+    runs-on: self-hosted
+    if: ${{ inputs.os == 'test' }}
+    steps:
+    
+      - uses: actions/checkout@v4
+      
+      - name: Output the input value
+        run: |
+         ls
+         echo "The node version to use is: ${{ inputs.os }}"
